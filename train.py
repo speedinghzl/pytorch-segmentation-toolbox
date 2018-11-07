@@ -46,7 +46,7 @@ RANDOM_SEED = 1234
 RESTORE_FROM = './dataset/MS_DeepLab_resnet_pretrained_init.pth'
 SAVE_NUM_IMAGES = 2
 SAVE_PRED_EVERY = 10000
-SNAPSHOT_DIR = './local_run_output/snapshots_deeplabv3/'
+SNAPSHOT_DIR = './snapshots/'
 WEIGHT_DECAY = 0.0005
 
 def str2bool(v):
