@@ -2,6 +2,11 @@
 Pytorch code for semantic segmentation. This is a minimal code to run PSPnet and Deeplabv3 on Cityscape dataset.
 Shortly afterwards, the code will be reviewed and organized for convenience.
 
+### Highlights of Our Implementations
+- Synchronous BN
+- Fewness of Training Time
+- Better Reproduced Performance
+
 ### Requirements
 
 To install PyTorch>=0.4.0, please refer to https://github.com/pytorch/pytorch#installation.
@@ -29,3 +34,5 @@ Please download MIT imagenet pretrained [resnet101-imagenet.pth](http://scenepar
 ./job_local.sh YOUR_CS_PATH
 ``` 
 
+### Benefits
+Some  recent  projects  have  already  benefited  from  ourimplementations.   For  example,  Object  Context  Network(OCNet)[https://github.com/PkuRainBow/OCNet] currently  achieves  the  state-of-the-art  resultson  Cityscapes  and  ADE20K.  In  addition,  our  code  alsomake great contributions to [Context Embedding with EdgePerceiving (CE2P)](https://github.com/liutinglt/CE2P), which won the 1st places in all hu-man parsing tracks in the 2nd LIP Challange.
