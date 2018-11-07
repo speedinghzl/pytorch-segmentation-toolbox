@@ -31,7 +31,7 @@ Please download MIT imagenet pretrained [resnet101-imagenet.pth](http://scenepar
 
 ### Training and Evaluation
 ```bash
-./job_local.sh YOUR_CS_PATH
+./run_local.sh YOUR_CS_PATH
 ``` 
 
 ### Benefits
