@@ -41,12 +41,12 @@ Some recent projects have already benefited from our implementations. For exampl
 
 If you find this code useful in your research, please consider citing:
 
-@online{torch2018segment,
-  author = {Huang, Zilong and Wei, Yunchao and Wang, Xinggang, and Liu, Wenyu},
-  title = {A PyTorch Semantic Segmentation Toolbox},
-  year = 2018,
-  url = {https://github.com/speedinghzl/pytorch-segmentation-toolbox}
-}
+    @online{torch2018segment,
+      author = {Huang, Zilong and Wei, Yunchao and Wang, Xinggang, and Liu, Wenyu},
+      title = {A PyTorch Semantic Segmentation Toolbox},
+      year = 2018,
+      url = {https://github.com/speedinghzl/pytorch-segmentation-toolbox}
+    }
 
 ### Thanks to the Third Party Libs
 [inplace_abn](https://github.com/mapillary/inplace_abn) - 
