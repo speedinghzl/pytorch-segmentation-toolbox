@@ -37,6 +37,17 @@ Please download MIT imagenet pretrained [resnet101-imagenet.pth](http://scenepar
 ### Benefits
 Some recent projects have already benefited from our implementations. For example, [Object  Context  Network(OCNet)](https://github.com/PkuRainBow/OCNet) currently  achieves  the  state-of-the-art  resultson  Cityscapes  and  ADE20K.  In  addition,  our code also make great contributions to [Context Embedding with EdgePerceiving (CE2P)](https://github.com/liutinglt/CE2P), which won the 1st places in all human parsing tracks in the 2nd LIP Challange.
 
+### Citing
+
+If you find this code useful in your research, please consider citing:
+
+@online{torch2018segment,
+  author = {Huang, Zilong and Wei, Yunchao and Wang, Xinggang, and Liu, Wenyu},
+  title = {A PyTorch Semantic Segmentation Toolbox},
+  year = 2018,
+  url = {https://github.com/speedinghzl/pytorch-segmentation-toolbox}
+}
+
 ### Thanks to the Third Party Libs
 [inplace_abn](https://github.com/mapillary/inplace_abn) - 
 [Pytorch-Deeplab](https://github.com/speedinghzl/Pytorch-Deeplab) - 
