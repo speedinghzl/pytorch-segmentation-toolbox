@@ -1,4 +1,4 @@
-# Pytorch-segmentation-toolbox
+# Pytorch-segmentation-toolbox [DOC](https://weiyc.github.io/assets/pdf/toolbox.pdf)
 Pytorch code for semantic segmentation. This is a minimal code to run PSPnet and Deeplabv3 on Cityscape dataset.
 Shortly afterwards, the code will be reviewed and reorganized for convenience.
 
