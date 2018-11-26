@@ -47,7 +47,6 @@ If you find this code useful in your research, please consider citing:
       howpublished = {\url{https://github.com/speedinghzl/pytorch-segmentation-toolbox}},
       year = {2018}
     }
-}
 
 ### Thanks to the Third Party Libs
 [inplace_abn](https://github.com/mapillary/inplace_abn) - 
