@@ -45,7 +45,7 @@ If you find this code useful in your research, please consider citing:
       author = {Huang, Zilong and Wei, Yunchao and Wang, Xinggang, and Liu, Wenyu},
       title = {A PyTorch Semantic Segmentation Toolbox},
       howpublished = {\url{https://github.com/speedinghzl/pytorch-segmentation-toolbox}},
-      year =         {2018}
+      year = {2018}
     }
 }
 
