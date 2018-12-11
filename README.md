@@ -9,8 +9,10 @@ Shortly afterwards, the code will be reviewed and reorganized for convenience.
 
 ### Requirements
 
-To install PyTorch>=0.4.0, please refer to https://github.com/pytorch/pytorch#installation.
-4 x 12g GPUs (e.g. TITAN XP)
+To install PyTorch>=0.4.0, please refer to https://github.com/pytorch/pytorch#installation. 
+
+4 x 12g GPUs (e.g. TITAN XP) 
+
 Python 3.6
 
 ### Compiling
