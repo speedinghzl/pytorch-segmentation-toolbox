@@ -39,7 +39,7 @@ Please download MIT imagenet pretrained [resnet101-imagenet.pth](http://scenepar
 ``` 
 
 ### Benefits
-Some recent projects have already benefited from our implementations. For example, [Object  Context  Network(OCNet)](https://github.com/PkuRainBow/OCNet) currently  achieves  the  state-of-the-art  resultson  Cityscapes  and  ADE20K. Our code also make great contributions to [Context Embedding with EdgePerceiving (CE2P)](https://github.com/liutinglt/CE2P), which won the 1st places in all human parsing tracks in the 2nd LIP Challange. In  addition, our recent work [CCNet: Criss-Cross Attention for semantic segmentation](https://github.com/speedinghzl/CCNet) is based on this repo.
+Some recent projects have already benefited from our implementations. For example, [CCNet: Criss-Cross Attention for semantic segmentation](https://github.com/speedinghzl/CCNet) and [Object  Context  Network(OCNet)](https://github.com/PkuRainBow/OCNet) currently  achieve  the  state-of-the-art  resultson  Cityscapes  and  ADE20K. In  addition, Our code also make great contributions to [Context Embedding with EdgePerceiving (CE2P)](https://github.com/liutinglt/CE2P), which won the 1st places in all human parsing tracks in the 2nd LIP Challange. 
 
 ### Citing
 
