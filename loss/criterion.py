@@ -34,12 +34,12 @@ class CriterionDSN(nn.Module):
             loss = self.criterion(scale_pred, target)
             return loss
 
-class CriterionOhemDSN2(nn.Module):
+class CriterionOhemDSN(nn.Module):
     '''
     DSN : We need to consider two supervision for the model.
     '''
     def __init__(self, ignore_index=255, thresh=0.7, min_kept=100000, use_weight=True, reduction='mean'):
-        super(CriterionOhemDSN2, self).__init__()
+        super(CriterionOhemDSN, self).__init__()
         self.ignore_index = ignore_index
         self.criterion1 = OhemCrossEntropy2d(ignore_index, thresh, min_kept)
         self.criterion2 = torch.nn.CrossEntropyLoss(ignore_index=ignore_index, reduction=reduction)
@@ -56,12 +56,12 @@ class CriterionOhemDSN2(nn.Module):
         return loss1 + loss2*0.4
 
 
-class CriterionOhemDSN(nn.Module):
+class CriterionOhemDSN2(nn.Module):
     '''
     DSN : We need to consider two supervision for the model.
     '''
     def __init__(self, ignore_index=255, thresh=0.7, min_kept=100000, use_weight=True, reduction='mean'):
-        super(CriterionOhemDSN, self).__init__()
+        super(CriterionOhemDSN2, self).__init__()
         self.ignore_index = ignore_index
         self.criterion = torch.nn.CrossEntropyLoss(ignore_index=ignore_index, reduction=reduction)
 
