@@ -110,7 +110,7 @@ def get_parser():
     parser.add_argument("--model", type=str, default='None',
                         help="choose model.")
     parser.add_argument("--num-workers", type=int, default=8,
-                        help="choose the number of recurrence.")
+                        help="choose the number of workers.")
     parser.add_argument("--ft", type=bool, default=False,
                         help="fine-tune the model with large input size.")
 
