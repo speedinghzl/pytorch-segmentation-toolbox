@@ -7,25 +7,25 @@ Shortly afterwards, the code will be reviewed and reorganized for convenience.
 - Fewness of Training Time
 - Better Reproduced Performance
 
-### Requirements
+### Requirements && Install
+Python 3.7
 
-To install PyTorch>=0.4.0, please refer to https://github.com/pytorch/pytorch#installation. 
+4 x 12g GPUs (e.g. TITAN XP)
 
-4 x 12g GPUs (e.g. TITAN XP) 
-
-Python 3.6
-
-### Compiling
-
-Some parts of InPlace-ABN have a native CUDA implementation, which must be compiled with the following commands:
 ```bash
-cd libs
-sh build.sh
-python build.py
-``` 
-The `build.sh` script assumes that the `nvcc` compiler is available in the current system search path.
-The CUDA kernels are compiled for `sm_50`, `sm_52` and `sm_61` by default.
-To change this (_e.g._ if you are using a Kepler GPU), please edit the `CUDA_GENCODE` variable in `build.sh`.
+# Install **Pytorch-1.1**
+$ conda install pytorch torchvision cudatoolkit=9.0 -c pytorch
+
+# Install **Apex**
+$ git clone https://github.com/NVIDIA/apex
+$ cd apex
+$ pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+
+# Install **Inplace-ABN**
+$ git clone https://github.com/mapillary/inplace_abn.git
+$ cd inplace_abn
+$ python setup.py install
+```
 
 ### Dataset and pretrained model
 
