@@ -2,6 +2,8 @@
 Pytorch code for semantic segmentation. This is a minimal code to run PSPnet and Deeplabv3 on Cityscape dataset.
 Shortly afterwards, the code will be reviewed and reorganized for convenience.
 
+**The New version toolbox is released on branch [Pytorch-1.0](https://github.com/speedinghzl/pytorch-segmentation-toolbox/tree/pytorch-1.1) which support Pytorch 1.0 or later**
+
 ### Highlights of Our Implementations
 - Synchronous BN
 - Fewness of Training Time
