@@ -10,7 +10,7 @@ from utils.logger import get_logger
 from utils.pyt_utils import parse_devices, all_reduce_tensor, extant_file
 
 try:
-    from apex.parallel import DistributedDataParallel, SyncBatchNorm
+    from apex.parallel import DistributedDataParallel, SyncBatchNorm, convert_syncbn_model
 except ImportError:
     raise ImportError(
         "Please install apex from https://www.github.com/nvidia/apex .")
@@ -63,6 +63,9 @@ class Engine(object):
                        help='continue from one certain checkpoint')
         p.add_argument('--local_rank', default=0, type=int,
                        help='process rank on node')
+
+    def sync_bn(self, model):
+        return convert_syncbn_model(model)
 
     def data_parallel(self, model):
         if self.distributed:

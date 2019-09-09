@@ -11,9 +11,6 @@ import functools
 import sys, os
 from utils.pyt_utils import load_model
 
-from inplace_abn import InPlaceABN, InPlaceABNSync
-BatchNorm2d = functools.partial(InPlaceABNSync, activation='identity')
-
 def conv3x3(in_planes, out_planes, stride=1):
     "3x3 convolution with padding"
     return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
@@ -25,14 +22,13 @@ class Bottleneck(nn.Module):
     def __init__(self, inplanes, planes, stride=1, dilation=1, downsample=None, fist_dilation=1, multi_grid=1):
         super(Bottleneck, self).__init__()
         self.conv1 = nn.Conv2d(inplanes, planes, kernel_size=1, bias=False)
-        self.bn1 = BatchNorm2d(planes)
+        self.bn1 = nn.BatchNorm2d(planes)
         self.conv2 = nn.Conv2d(planes, planes, kernel_size=3, stride=stride,
                                padding=dilation*multi_grid, dilation=dilation*multi_grid, bias=False)
-        self.bn2 = BatchNorm2d(planes)
+        self.bn2 = nn.BatchNorm2d(planes)
         self.conv3 = nn.Conv2d(planes, planes * 4, kernel_size=1, bias=False)
-        self.bn3 = BatchNorm2d(planes * 4)
-        self.relu = nn.ReLU(inplace=False)
-        self.relu_inplace = nn.ReLU(inplace=True)
+        self.bn3 = nn.BatchNorm2d(planes * 4)
+        self.relu = nn.ReLU(inplace=True)
         self.downsample = downsample
         self.dilation = dilation
         self.stride = stride
@@ -54,8 +50,8 @@ class Bottleneck(nn.Module):
         if self.downsample is not None:
             residual = self.downsample(x)
 
-        out = out + residual      
-        out = self.relu_inplace(out)
+        out += residual      
+        out = self.relu(out)
 
         return out
 
@@ -71,15 +67,17 @@ class PSPModule(nn.Module):
         self.stages = nn.ModuleList([self._make_stage(features, out_features, size) for size in sizes])
         self.bottleneck = nn.Sequential(
             nn.Conv2d(features+len(sizes)*out_features, out_features, kernel_size=3, padding=1, dilation=1, bias=False),
-            InPlaceABNSync(out_features),
+            nn.BatchNorm2d(out_features),
+            nn.ReLU(inplace=True),
             nn.Dropout2d(0.1)
             )
 
     def _make_stage(self, features, out_features, size):
         prior = nn.AdaptiveAvgPool2d(output_size=(size, size))
         conv = nn.Conv2d(features, out_features, kernel_size=1, bias=False)
-        bn = InPlaceABNSync(out_features)
-        return nn.Sequential(prior, conv, bn)
+        bn = nn.BatchNorm2d(out_features)
+        relu = nn.ReLU(inplace=True)
+        return nn.Sequential(prior, conv, bn, relu)
 
     def forward(self, feats):
         h, w = feats.size(2), feats.size(3)
@@ -92,17 +90,15 @@ class ResNet(nn.Module):
         self.inplanes = 128
         super(ResNet, self).__init__()
         self.conv1 = conv3x3(3, 64, stride=2)
-        self.bn1 = BatchNorm2d(64)
-        self.relu1 = nn.ReLU(inplace=False)
+        self.bn1 = nn.BatchNorm2d(64)
+        self.relu1 = nn.ReLU(inplace=True)
         self.conv2 = conv3x3(64, 64)
-        self.bn2 = BatchNorm2d(64)
-        self.relu2 = nn.ReLU(inplace=False)
+        self.bn2 = nn.BatchNorm2d(64)
+        self.relu2 = nn.ReLU(inplace=True)
         self.conv3 = conv3x3(64, 128)
-        self.bn3 = BatchNorm2d(128)
-        self.relu3 = nn.ReLU(inplace=False)
-        self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+        self.bn3 = nn.BatchNorm2d(128)
+        self.relu3 = nn.ReLU(inplace=True)
 
-        self.relu = nn.ReLU(inplace=False)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1, ceil_mode=True) # change
         self.layer1 = self._make_layer(block, 64, layers[0])
         self.layer2 = self._make_layer(block, 128, layers[1], stride=2)
@@ -114,7 +110,8 @@ class ResNet(nn.Module):
 
         self.dsn = nn.Sequential(
             nn.Conv2d(1024, 512, kernel_size=3, stride=1, padding=1),
-            InPlaceABNSync(512),
+            nn.BatchNorm2d(512),
+            nn.ReLU(inplace=True),
             nn.Dropout2d(0.1),
             nn.Conv2d(512, num_classes, kernel_size=1, stride=1, padding=0, bias=True)
             )

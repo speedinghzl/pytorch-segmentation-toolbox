@@ -186,6 +186,7 @@ def main():
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         seg_model.to(device)
 
+        model = engine.sync_bn(model)
         model = engine.data_parallel(seg_model)
         model.train()
 
