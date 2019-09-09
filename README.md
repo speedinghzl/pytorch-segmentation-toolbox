@@ -20,11 +20,6 @@ $ conda install pytorch torchvision cudatoolkit=9.0 -c pytorch
 $ git clone https://github.com/NVIDIA/apex
 $ cd apex
 $ pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
-
-# Install **Inplace-ABN**
-$ git clone https://github.com/mapillary/inplace_abn.git
-$ cd inplace_abn
-$ python setup.py install
 ```
 
 ### Dataset and pretrained model
