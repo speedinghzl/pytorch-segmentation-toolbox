@@ -186,12 +186,13 @@ def main():
         device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         seg_model.to(device)
 
-        model = engine.sync_bn(model)
+        seg_model = engine.sync_bn(seg_model)
         model = engine.data_parallel(seg_model)
         model.train()
 
-        if not os.path.exists(args.snapshot_dir):
-            os.makedirs(args.snapshot_dir)
+        if (not engine.distributed) or (engine.distributed and engine.local_rank == 0):
+            if not os.path.exists(args.snapshot_dir):
+                os.makedirs(args.snapshot_dir)
             
         run = True
         global_iteration = args.start_iters
